@@ -9,1220 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&family=Fira+Code&display=swap" rel="stylesheet">
     <!-- 在 head 标签内添加 Google Fonts 链接 -->
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary-color: #ff00ff;
-            --secondary-color: #00ffff;
-            --text-color: #ffffff;
-            --background-color: #000000;
-            --card-background: rgba(255, 255, 255, 0.1);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Orbitron', sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--background-color);
-            overflow-x: hidden;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        header {
-            text-align: center;
-            padding: 50px 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-            text-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color), 0 0 30px var(--primary-color);
-        }
-
-        h2 {
-            font-size: 1.5rem;
-            font-weight: 400;
-            text-shadow: 0 0 5px var(--secondary-color), 0 0 10px var(--secondary-color);
-        }
-
-        .card {
-            background-color: var(--card-background);
-            border-radius: 8px;
-            box-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--secondary-color);
-            padding: 30px;
-            margin: 30px 0;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 0 20px var(--primary-color), 0 0 40px var(--secondary-color);
-        }
-
-        .section-title {
-            font-size: 2rem;
-            color: var(--secondary-color);
-            margin-bottom: 20px;
-            text-shadow: 0 0 5px var(--secondary-color);
-        }
-
-        .profile-image {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            margin: 0 auto 20px;
-            display: block;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-            border: 2px solid var(--primary-color);
-            box-shadow: 0 0 10px var(--primary-color);
-        }
-
-        .profile-image:hover {
-            transform: scale(1.05);
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        .social-links a {
-            color: var(--text-color);
-            font-size: 1.5rem;
-            margin: 0 10px;
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
-
-        .social-links a:hover {
-            color: var(--primary-color);
-            transform: scale(1.2);
-        }
-
-        .skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .skill-tag {
-            background-color: var(--primary-color);
-            color: var(--text-color);
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .skill-tag:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 0 10px var(--primary-color);
-        }
-
-        .projects {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .project-card {
-            background-color: var(--card-background);
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 0 10px var(--secondary-color);
-            transition: transform 0.3s ease;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .project-image {
-            width: 100%;
-            height: 200px;
-            background-color: #333;
-            transition: transform 0.3s ease;
-        }
-
-        .project-card:hover .project-image {
-            transform: scale(1.05);
-        }
-
-        .project-info {
-            padding: 20px;
-        }
-
-        .project-title {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            color: var(--secondary-color);
-        }
-
-        footer {
-            background-color: rgba(0, 0, 0, 0.5);
-            text-align: center;
-            padding: 20px 0;
-            margin-top: 50px;
-        }
-
-        footer .social-links a {
-            color: var(--text-color);
-            font-size: 1.2rem;
-            margin: 0 10px;
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
-
-        footer .social-links a:hover {
-            color: var(--primary-color);
-            transform: scale(1.2);
-        }
-
-        #ai-chat {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 300px;
-            height: 400px;
-            background-color: rgba(0, 0, 0, 0.8);
-            border-radius: 15px;
-            box-shadow: 0 0 20px var(--primary-color);
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        #ai-chat:hover {
-            box-shadow: 0 0 30px var(--secondary-color);
-        }
-
-        #chat-header {
-            background-color: var(--primary-color);
-            color: var(--text-color);
-            padding: 10px;
-            text-align: center;
-            font-weight: bold;
-        }
-
-        #chat-messages {
-            flex-grow: 1;
-            overflow-y: auto;
-            padding: 10px;
-            display: flex;
-            flex-direction: column;
-            scrollbar-width: thin;
-            scrollbar-color: var(--secondary-color) rgba(255, 255, 255, 0.1);
-        }
-
-        #chat-messages::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        #chat-messages::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        #chat-messages::-webkit-scrollbar-thumb {
-            background-color: var(--secondary-color);
-            border-radius: 3px;
-        }
-
-        .message {
-            max-width: 80%;
-            padding: 8px 12px;
-            margin-bottom: 10px;
-            border-radius: 15px;
-            font-size: 0.9rem;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.3s ease, transform 0.3s ease;
-        }
-
-        .message.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .user-message {
-            align-self: flex-end;
-            background-color: var(--secondary-color);
-            color: var(--text-color);
-        }
-
-        .ai-message {
-            align-self: flex-start;
-            background-color: rgba(0, 255, 255, 0.2);
-            color: #ffffff;
-            position: relative;
-        }
-
-        .ai-message.typing::after {
-            content: '|';
-            position: absolute;
-            right: -10px;
-            bottom: 0;
-            color: var(--secondary-color);
-            animation: blink 0.7s infinite;
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 0; }
-            50% { opacity: 1; }
-        }
-
-        @keyframes gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        #chat-input {
-            display: flex;
-            padding: 10px;
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-
-        #chat-input input {
-            flex-grow: 1;
-            padding: 8px 12px;
-            border: none;
-            border-radius: 8px;
-            background-color: rgba(255, 255, 255, 0.2);
-            color: var(--text-color);
-        }
-
-        #chat-input button {
-            background-color: transparent;
-            color: #3498db;
-            border: none;
-            padding: 8px;
-            cursor: pointer;
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
-
-        #chat-input button i {
-            font-size: 1.5rem;
-        }
-
-        #chat-input button:hover {
-            color: #2980b9;
-            transform: scale(1.1);
-        }
-
-        #music-player {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            width: 300px;
-            background-color: rgba(0, 0, 0, 0.8);
-            border-radius: 15px;
-            box-shadow: 0 0 20px var(--secondary-color);
-            padding: 15px;
-            transition: all 0.3s ease;
-        }
-
-        #music-player:hover {
-            box-shadow: 0 0 30px var(--primary-color);
-            transform: scale(1.05);
-        }
-
-        #music-player .player-header {
-            color: var(--text-color);
-            text-align: center;
-            margin-bottom: 10px;
-            font-weight: bold;
-        }
-
-        #music-player iframe {
-            width: 100%;
-            height: 80px;
-            border: none;
-            border-radius: 10px;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
-        #music-player:hover {
-            animation: pulse 2s infinite;
-        }
-
-        @media (max-width: 768px) {
-            .projects {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .timeline {
-            position: relative;
-            margin: 30px 0;
-            padding: 20px;
-        }
-
-        .timeline::before {
-            content: none; /* 移除时间轴的竖线 */
-        }
-
-        .timeline-item {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 30px;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fade-in 0.5s forwards;
-            position: relative;
-        }
-
-        .timeline-date {
-            width: 120px;
-            padding: 10px;
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-            border-radius: 5px;
-            text-align: center;
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
-        }
-
-        .timeline-content {
-            width: calc(100% - 150px);
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
-        }
-
-        .skill-bars {
-            margin: 20px 0;
-        }
-
-        .skill-bar {
-            margin-bottom: 20px;
-        }
-
-        .skill-info {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 5px;
-        }
-
-        .skill-progress {
-            height: 10px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 5px;
-            overflow: hidden;
-        }
-
-        .progress {
-            width: 0;
-            height: 100%;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-            animation: progress-animation 1.5s ease-out forwards;
-        }
-
-        .project-chips {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .project-chip {
-            padding: 8px 15px;
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-            border-radius: 20px;
-            font-size: 0.9rem;
-            animation: chip-float 3s ease-in-out infinite;
-        }
-
-        @keyframes timeline-glow {
-            0%, 100% { box-shadow: 0 0 5px var(--primary-color); }
-            50% { box-shadow: 0 0 20px var(--secondary-color); }
-        }
-
-        @keyframes fade-in {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes progress-animation {
-            to {
-                width: var(--progress-width);
-            }
-        }
-
-        @keyframes chip-float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
-        }
-
-        .contribution-graph {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            padding: 20px;
-            margin: 20px 0;
-        }
-
-        .contribution-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .contribution-title {
-            font-size: 1.2rem;
-            color: var(--text-color);
-        }
-
-        .contribution-grid {
-            display: grid;
-            grid-template-columns: repeat(52, 1fr);
-            gap: 3px;
-            margin-top: 10px;
-        }
-
-        .contribution-cell {
-            width: 12px;
-            height: 12px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 2px;
-            transition: all 0.3s ease;
-        }
-
-        .contribution-cell:hover {
-            transform: scale(1.2);
-        }
-
-        .contribution-level-0 { background-color: rgba(255, 255, 255, 0.1); }
-        .contribution-level-1 { background-color: rgba(0, 255, 255, 0.2); }
-        .contribution-level-2 { background-color: rgba(0, 255, 255, 0.4); }
-        .contribution-level-3 { background-color: rgba(0, 255, 255, 0.6); }
-        .contribution-level-4 { background-color: rgba(0, 255, 255, 0.8); }
-
-        .stats-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin: 20px 0;
-        }
-
-        .stat-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 0 20px var(--secondary-color);
-        }
-
-        .stat-number {
-            font-size: 2rem;
-            color: var(--secondary-color);
-            margin: 10px 0;
-            font-weight: bold;
-        }
-
-        .stat-label {
-            color: var(--text-color);
-            font-size: 0.9rem;
-        }
-
-        .platform-stats {
-            display: flex;
-            gap: 20px;
-            margin: 20px 0;
-        }
-
-        .platform-stat {
-            flex: 1;
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            text-align: center;
-        }
-
-        /* 在 <style> 标中添加新样式 */
-        .skill-progress .progress {
-            width: 0;
-            height: 100%;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-            animation: progress-extend 1.5s ease-out forwards;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .skill-progress .progress::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            animation: progress-shine 2s infinite;
-        }
-
-        @keyframes progress-extend {
-            from { width: 0; }
-            to { width: var(--progress-width); }
-        }
-
-        @keyframes progress-shine {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-
-        /* 主题换按钮 */
-        #theme-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-            border: none;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            cursor: pointer;
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        #theme-toggle i {
-            color: var(--text-color);
-            font-size: 1.5rem;
-        }
-
-        #theme-toggle:hover {
-            transform: rotate(180deg);
-        }
-
-        /* 侧边栏样式 */
-        .sidebar {
-            position: fixed;
-            left: -300px;
-            top: 0;
-            width: 300px;
-            height: 100vh;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 1000;
-            transition: all 0.3s ease;
-            padding: 20px;
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
-        }
-
-        .sidebar.active {
-            left: 0;
-        }
-
-        .sidebar-toggle {
-            position: fixed;
-            left: 20px;
-            top: 20px;
-            z-index: 1001;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            padding: 5px;
-            transition: all 0.3s ease;
-        }
-
-        .sidebar-toggle span {
-            width: 100%;
-            height: 3px;
-            background: var(--text-color);
-            border-radius: 3px;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 5px var(--primary-color);
-        }
-
-        /* 汉堡菜单变叉动画 */
-        .sidebar-toggle.active span:nth-child(1) {
-            transform: rotate(45deg) translate(8px, 8px);
-            background: var(--primary-color);
-        }
-
-        .sidebar-toggle.active span:nth-child(2) {
-            opacity: 0;
-            transform: translateX(-20px);
-        }
-
-        .sidebar-toggle.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(8px, -8px);
-            background: var(--primary-color);
-        }
-
-        .sidebar-header {
-            text-align: center;
-            margin-bottom: 30px;
-            padding-top: 50px;
-        }
-
-        .sidebar-nav {
-            list-style: none;
-            padding: 0;
-        }
-
-        .sidebar-nav li {
-            margin-bottom: 15px;
-        }
-
-        .sidebar-nav a {
-            color: var(--text-color);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            padding: 10px;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-
-        .sidebar-nav a:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateX(10px);
-        }
-
-        .sidebar-nav i {
-            margin-right: 10px;
-            width: 20px;
-            text-align: center;
-        }
-
-        /* 浅色主题变量 */
-        [data-theme="light"] {
-            --primary-color: #2196f3;
-            --secondary-color: #00bcd4;
-            --text-color: #333333;
-            --background-color: #ffffff;
-            --card-background: rgba(0, 0, 0, 0.05);
-        }
-
-        /* 添加以下浅色主题特定样式 */
-        [data-theme="light"] .card {
-            background-color: rgba(255, 255, 255, 0.9);
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-        }
-
-        [data-theme="light"] .section-title {
-            color: var(--primary-color);
-            text-shadow: none;
-        }
-
-        [data-theme="light"] .skill-tag {
-            background-color: var(--primary-color);
-            color: white;
-        }
-
-        [data-theme="light"] .timeline-date {
-            background: var(--primary-color);
-            color: white;
-        }
-
-        [data-theme="light"] .timeline-content {
-            background: rgba(0, 0, 0, 0.05);
-            color: var(--text-color);
-        }
-
-        [data-theme="light"] .project-title {
-            color: var(--primary-color);
-        }
-
-        [data-theme="light"] .project-card {
-            background-color: white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        [data-theme="light"] #ai-chat {
-            background-color: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-        }
-
-        [data-theme="light"] .ai-message {
-            background-color: rgba(33, 150, 243, 0.1);
-            color: var(--text-color);
-        }
-
-        [data-theme="light"] .user-message {
-            background-color: var(--primary-color);
-            color: white;
-        }
-
-        [data-theme="light"] #chat-input input {
-            background-color: rgba(0, 0, 0, 0.05);
-            color: var(--text-color);
-        }
-
-        [data-theme="light"] .sidebar {
-            background: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-        }
-
-        [data-theme="light"] .sidebar-nav a {
-            color: var(--text-color);
-        }
-
-        [data-theme="light"] .sidebar-toggle span {
-            background: var(--text-color);
-        }
-
-        [data-theme="light"] .contribution-cell {
-            border: 1px solid rgba(0, 0, 0, 0.1);
-        }
-
-        [data-theme="light"] .stat-card {
-            background: white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        [data-theme="light"] .platform-stat {
-            background: white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        [data-theme="light"] h1 {
-            color: var(--primary-color);
-            text-shadow: none;
-        }
-
-        [data-theme="light"] h2 {
-            color: var(--secondary-color);
-            text-shadow: none;
-        }
-
-        [data-theme="light"] .social-links a {
-            color: var(--text-color);
-        }
-
-        [data-theme="light"] .social-links a:hover {
-            color: var(--primary-color);
-        }
-
-        /* 语言切换按钮 */
-        #language-toggle {
-            position: fixed;
-            top: 20px;
-            right: 80px; /* 位于主题切换按钮左侧 */
-            z-index: 1000;
-            background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
-            border: none;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            cursor: pointer;
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 1.2rem;
-            color: var(--text-color);
-            overflow: hidden;
-        }
-
-        #language-toggle span {
-            display: block;
-            transition: all 0.3s ease;
-        }
-
-        #language-toggle:hover span {
-            transform: translateY(-100%);
-        }
-
-        /* 优化侧边栏动画和样式 */
-        .sidebar {
-            background: linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.85));
-            backdrop-filter: blur(10px);
-            border-right: 1px solid rgba(0, 255, 255, 0.1);
-            transform: translateX(-100%);
-            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .sidebar.active {
-            transform: translateX(0);
-        }
-
-        .sidebar-nav a {
-            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.05));
-            border-radius: 8px;
-            margin: 5px 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .sidebar-nav a::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.2), transparent);
-            transition: 0.5s;
-        }
-
-        .sidebar-nav a:hover::before {
-            left: 100%;
-        }
-
-        .sidebar-header {
-            position: relative;
-            padding: 20px;
-            text-align: center;
-            border-bottom: 1px solid rgba(0, 255, 255, 0.1);
-        }
-
-        .sidebar-header::after {
-            content: '';
-            position: absolute;
-            bottom: -1px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 50%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--secondary-color), transparent);
-        }
-
-        /* 优化技能进度条动画 */
-        .skill-progress .progress {
-            position: relative;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-            animation: progress-extend 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-        }
-
-        .skill-progress .progress::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            animation: progress-shine 2s infinite;
-        }
-
-        @keyframes progress-shine {
-            0% { transform: translateX(-200%); }
-            100% { transform: translateX(200%); }
-        }
-
-        /* 替换之前的 typewriter 相关样式 */
-        .typewriter {
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 20px 0;
-            font-family: 'Source Code Pro', monospace;
-        }
-
-        .typewriter-text {
-            position: relative;
-            font-size: 1.4rem;
-            color: var(--secondary-color);
-            padding-left: 25px;
-            white-space: pre;
-        }
-
-        .typewriter-text::before {
-            content: '>';
-            position: absolute;
-            left: 0;
-            color: var(--primary-color);
-        }
-
-        .typewriter-text::after {
-            content: '|';
-            position: absolute;
-            right: -12px;
-            color: #fff;
-            animation: blink 0.7s infinite;
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-
-        [data-theme="light"] .typewriter-text::after {
-            color: #333;
-        }
-
-        /* 在 style 标签中添加新样式 */
-        .minecraft-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .minecraft-card {
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(0, 255, 255, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .minecraft-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, transparent, rgba(0, 255, 255, 0.1), transparent);
-            transform: translateX(-100%);
-            transition: 0.5s;
-        }
-
-        .minecraft-card:hover::before {
-            transform: translateX(100%);
-        }
-
-        .minecraft-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.2);
-        }
-
-        .minecraft-icon {
-            font-size: 2.5rem;
-            color: var(--secondary-color);
-            margin-bottom: 15px;
-        }
-
-        .minecraft-stats {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 15px;
-            color: var(--secondary-color);
-        }
-
-        .achievements-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .achievement-card {
-            display: flex;
-            align-items: center;
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-            padding: 20px;
-            transition: all 0.3s ease;
-        }
-
-        .achievement-card:hover {
-            transform: translateX(10px);
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
-        }
-
-        .achievement-icon {
-            font-size: 2rem;
-            color: var(--primary-color);
-            margin-right: 20px;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            background: rgba(255, 0, 255, 0.1);
-        }
-
-        .achievement-content {
-            flex: 1;
-        }
-
-        .achievement-progress {
-            height: 6px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 3px;
-            margin-top: 10px;
-            overflow: hidden;
-        }
-
-        .achievement-progress .progress {
-            height: 100%;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-            width: 0;
-            animation: progress-extend 1.5s ease-out forwards;
-        }
-
-        /* 适配浅色主题 */
-        [data-theme="light"] .minecraft-card {
-            background: rgba(255, 255, 255, 0.9);
-            border: 1px solid rgba(0, 0, 0, 0.1);
-        }
-
-        [data-theme="light"] .achievement-card {
-            background: rgba(255, 255, 255, 0.9);
-        }
-
-        [data-theme="light"] .achievement-icon {
-            background: rgba(33, 150, 243, 0.1);
-        }
-
-        /* 粒子背景 */
-        .particles-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        .particle {
-            position: absolute;
-            background: var(--primary-color);
-            border-radius: 50%;
-            opacity: 0.3;
-            animation: float 15s infinite linear;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(0) rotate(0deg);
-                opacity: 0.3;
-            }
-            50% {
-                opacity: 0.8;
-            }
-            100% {
-                transform: translateY(-100vh) rotate(360deg);
-                opacity: 0.3;
-            }
-        }
-
-        /* 3D 卡片展示区 */
-        .showcase-3d {
-            perspective: 1000px;
-            margin: 40px 0;
-        }
-
-        .card-3d {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 20px;
-            margin: 20px 0;
-            transform-style: preserve-3d;
-            transition: transform 0.5s ease;
-            position: relative;
-        }
-
-        .card-3d:hover {
-            transform: rotateY(10deg) rotateX(5deg);
-        }
-
-        .card-3d::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-            opacity: 0.1;
-            transform: translateZ(-1px);
-            border-radius: 15px;
-        }
-
-        /* Minecraft 风格的按钮 */
-        .minecraft-button {
-            background: #727272;
-            border: 2px solid #000;
-            padding: 10px 20px;
-            font-family: 'Minecraft', monospace;
-            color: #fff;
-            text-shadow: 2px 2px #000;
-            cursor: pointer;
-            position: relative;
-            margin: 10px;
-            transition: all 0.1s;
-        }
-
-        .minecraft-button:hover {
-            background: #8b8b8b;
-            transform: translateY(-2px);
-        }
-
-        .minecraft-button:active {
-            transform: translateY(0);
-        }
-
-        /* 技能树样式 */
-        .skill-tree {
-            position: relative;
-            padding: 20px;
-            margin: 20px 0;
-        }
-
-        .skill-branch {
-            position: relative;
-            margin: 20px 0;
-            padding-left: 30px;
-            border-left: 2px solid var(--secondary-color);
-        }
-
-        .skill-node {
-            position: relative;
-            margin: 15px 0;
-            padding: 10px;
-            background: rgba(0, 255, 255, 0.1);
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-
-        .skill-node::before {
-            content: '';
-            position: absolute;
-            left: -31px;
-            top: 50%;
-            width: 20px;
-            height: 2px;
-            background: var(--secondary-color);
-        }
-
-        .skill-node:hover {
-            transform: translateX(10px);
-            background: rgba(0, 255, 255, 0.2);
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <button id="theme-toggle">
@@ -1314,62 +101,94 @@
                 <div class="timeline-item">
                     <div class="timeline-date">2015</div>
                     <div class="timeline-content">
-                        <h4>First Programming Award</h4>
+                        <h4>First Programming Award | 第一个编程奖</h4>
                         <p>Third Prize in High-tech Zone Programming Competition (Age 7)</p>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-date">2016</div>
                     <div class="timeline-content">
-                        <h4>Scratch Competition</h4>
+                        <h4>Scratch Competition | 橘色猫 比赛</h4>
                         <p>First Prize in Scratch Programming Competition (Age 8)</p>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-date">2017</div>
                     <div class="timeline-content">
-                        <h4>Python Achievement</h4>
+                        <h4>Python Achievement | Python 成就</h4>
                         <p>Winner in Hefei City Python Competition (Age 9)</p>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-date">2019</div>
                     <div class="timeline-content">
-                        <h4>School Recognition</h4>
+                        <h4>School Recognition | 学校认可</h4>
                         <p>School Programming Competition Award (Age 11)</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2024</div>
+                    <div class="timeline-content">
+                        <h4>Scammer God | 诈骗高手</h4>
+                        <p>The best profile maker for my craft, the only drawback is that it does not ship after purchase</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2025</div>
+                    <div class="timeline-content">
+                        <h4>SuperChatGPT-Skidder | 伟大的我的手艺开发者</h4>
+                        <p>Made my craft Naven client to bypass the largest mini-game server in mainland China</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <section class="card" id="skills">
-            <h3 class="section-title">Skills & Expertise</h3>
+            <h3 class="section-title">Skills & Expertise | 技能特长</h3>
             <div class="skill-bars">
                 <div class="skill-bar">
                     <div class="skill-info">
-                        <span>Python</span>
-                        <span class="percentage">80%</span>
+                        <span>Skid</span>
+                        <span class="percentage">114514%</span>
                     </div>
                     <div class="skill-progress">
-                        <div class="progress" data-value="80"></div>
+                        <div class="progress" data-value="114514"></div>
+                    </div>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-info">
+                        <span>Chat With GPT</span>
+                        <span class="percentage">1919810%</span>
+                    </div>
+                    <div class="skill-progress">
+                        <div class="progress" data-value="1919810"></div>
+                    </div>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-info">
+                        <span>Python</span>
+                        <span class="percentage">0%</span>
+                    </div>
+                    <div class="skill-progress">
+                        <div class="progress" data-value="0"></div>
                     </div>
                 </div>
                 <div class="skill-bar">
                     <div class="skill-info">
                         <span>Java</span>
-                        <span class="percentage">55%</span>
+                        <span class="percentage">0%</span>
                     </div>
                     <div class="skill-progress">
-                        <div class="progress" data-value="55"></div>
+                        <div class="progress" data-value="0"></div>
                     </div>
                 </div>
                 <div class="skill-bar">
                     <div class="skill-info">
                         <span>Minecraft Development</span>
-                        <span class="percentage">75%</span>
+                        <span class="percentage">0%</span>
                     </div>
                     <div class="skill-progress">
-                        <div class="progress" data-value="75"></div>
+                        <div class="progress" data-value="0"></div>
                     </div>
                 </div>
             </div>
@@ -1379,48 +198,42 @@
                     <span class="lang-zh">代表项目</span>
                 </h4>
                 <div class="project-chips">
-                    <div class="project-chip">WangChat</div>
-                    <div class="project-chip">ChatBOT</div>
-                    <div class="project-chip">WangProtect Antivirus</div>
+                    <div class="project-chip">N@ven Cl1ent</div>
+                    <div class="project-chip">Client Config</div>
                 </div>
             </div>
         </section>
 
         <section class="card" id="projects">
-            <h3 class="section-title">Portfolio</h3>
+            <h3 class="section-title">Portfolio | 文件夹（Shit Translate）</h3>
             <div class="projects">
                 <div class="project-card">
                     <div class="project-image"></div>
                     <div class="project-info">
-                        <h4 class="project-title">E-commerce Platform</h4>
-                        <p>A full-stack e-commerce solution with React frontend and Node.js backend.</p>
+                        <h4 class="project-title">奶粉WebSite</h4>
+                        <p>The chatbot ChatGPT of the American artificial intelligence company OpenAI independently completes the reservation of public toilets throughout the station without human intervention.</p>
                     </div>
                 </div>
                 <div class="project-card">
                     <div class="project-image"></div>
                     <div class="project-info">
-                        <h4 class="project-title">Task Management App</h4>
-                        <p>A responsive web application for efficient task and project management.</p>
+                        <h4 class="project-title">Afteglow™ Config</h4>
+                        <p>The best cheat client configuration file item for my craft, you can buy it for twenty yuan. It is very, very good, and will not let you get errors and lags in the sea of ​​pixels, blocks and multiple minecraft. Oh, by the way, you may not get your configuration as expected after you pay 20 Chinese yuan. Additional note: Configurators are good people, but they obviously don't have the insight to spot the wrong sellers</p>
                     </div>
                 </div>
                 <div class="project-card">
                     <div class="project-image"></div>
                     <div class="project-info">
-                        <h4 class="project-title">Data Visualization Dashboard</h4>
-                        <p>An interactive dashboard for visualizing complex datasets using D3.js.</p>
+                        <h4 class="project-title">Bedrock Client</h4>
+                        <p>IDK</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <section class="card" id="education">
-            <h3 class="section-title">Education & Experience</h3>
-            <h4>Bachelor of Science in Computer Science</h4>
-            <p>XYZ University, Graduated 20XX</p>
-            <h4>Software Engineer at Tech Innovators Inc.</h4>
-            <p>20XX - Present</p>
-            <h4>Web Developer at Digital Solutions Ltd.</h4>
-            <p>20XX - 20XX</p>
+            <h3 class="section-title">Education & Experience | 教育与经验</h3>
+            Undefined
         </section>
 
         <section class="card" id="contact">
@@ -1428,24 +241,24 @@
             <p>I'm always open to new opportunities and collaborations. Feel free to reach out!</p>
             <p>Email: 3042444341@qq.com</p>
             <p>QQ: 3042444341</p>
-            <p>Location: City, Country</p>
+            <p>Location: China Taiwan</p>
         </section>
 
         <section class="card" id="github-stats">
-            <h3 class="section-title">Coding Activity</h3>
+            <h3 class="section-title">Coding Activity | 同性交友活动</h3>
             
             <div class="platform-stats">
                 <div class="platform-stat">
                     <i class="fab fa-github"></i>
-                    <h4>GitHub</h4>
-                    <div class="stat-number">819</div>
+                    <h4>Original</h4>
+                    <div class="stat-number">0</div>
                     <div class="stat-label">Contributions in the last year</div>
                 </div>
                 <div class="platform-stat">
                     <i class="fab fa-git-alt"></i>
-                    <h4>Gitee</h4>
-                    <div class="stat-number">523</div>
-                    <div class="stat-label">Contributions</div>
+                    <h4>Chatgpt Usage</h4>
+                    <div class="stat-number">1145141919810</div>
+                    <div class="stat-label">Tokens</div>
                 </div>
             </div>
 
@@ -1468,7 +281,7 @@
             <div class="stats-container">
                 <div class="stat-card">
                     <i class="fas fa-code-branch"></i>
-                    <div class="stat-number">42</div>
+                    <div class="stat-number">1989</div>
                     <div class="stat-label">
                         <span class="lang-en">Repositories</span>
                         <span class="lang-zh">代码仓库</span>
@@ -1476,12 +289,12 @@
                 </div>
                 <div class="stat-card">
                     <i class="fas fa-star"></i>
-                    <div class="stat-number">156</div>
+                    <div class="stat-number">06</div>
                     <div class="stat-label">Total Stars</div>
                 </div>
                 <div class="stat-card">
                     <i class="fas fa-code"></i>
-                    <div class="stat-number">8</div>
+                    <div class="stat-number">04</div>
                     <div class="stat-label">Current Streak (days)</div>
                 </div>
             </div>
@@ -1495,7 +308,7 @@
                 <span class="lang-zh">我的世界项目</span>
             </h3>
             <div class="minecraft-grid">
-                <div class="minecraft-card">
+                <!-- <div class="minecraft-card">
                     <div class="minecraft-icon">
                         <i class="fas fa-plug"></i>
                     </div>
@@ -1527,7 +340,8 @@
                         <span><i class="fas fa-download"></i> 2000+</span>
                         <span><i class="fas fa-star"></i> 4.9</span>
                     </div>
-                </div>
+                </div> -->
+                Undefined
             </div>
         </section>
 
@@ -1543,8 +357,8 @@
                         <i class="fas fa-code"></i>
                     </div>
                     <div class="achievement-content">
-                        <h4>10,000+ Lines</h4>
-                        <p>Lines of code written in 2023</p>
+                        <h4>10,000,000,000,000+ Lines</h4>
+                        <p>Lines of code written in planck time</p>
                         <div class="achievement-progress">
                             <div class="progress" style="--progress-width: 85%"></div>
                         </div>
@@ -1556,7 +370,8 @@
                     </div>
                     <div class="achievement-content">
                         <h4>Open Source</h4>
-                        <p>20+ Projects contributed</p>
+                        <p>0+ Projects contributed</p>
+                        <p>Who the hell cares about open source projects?</p>
                         <div class="achievement-progress">
                             <div class="progress" style="--progress-width: 75%"></div>
                         </div>
@@ -1567,8 +382,8 @@
                         <i class="fas fa-bug"></i>
                     </div>
                     <div class="achievement-content">
-                        <h4>Bug Hunter</h4>
-                        <p>500+ Bugs fixed</p>
+                        <h4>Bug Maker</h4>
+                        <p>500+ Bugs maked</p>
                         <div class="achievement-progress">
                             <div class="progress" style="--progress-width: 90%"></div>
                         </div>
@@ -1585,22 +400,17 @@
                 <span class="lang-zh">精选项目</span>
             </h3>
             <div class="card-3d">
-                <h4>WangOS - Custom Operating System</h4>
-                <p>A lightweight operating system built from scratch using Assembly and C</p>
+                <h4>Windows System</h4>
+                <p>是的是的，是我写的</p>
                 <div class="project-tech">
-                    <span>Assembly</span>
-                    <span>C</span>
-                    <span>OS Development</span>
+                    <span>Scratch</span>
+                    <span>CodeMao</span>
                 </div>
             </div>
             <div class="card-3d">
-                <h4>AI Chat Assistant</h4>
-                <p>An intelligent chatbot powered by machine learning and natural language processing</p>
-                <div class="project-tech">
-                    <span>Python</span>
-                    <span>TensorFlow</span>
-                    <span>NLP</span>
-                </div>
+                <h4>幻影盾杀手</h4>
+                <p>不是幻影盾发布就破解</p>
+                <img src="img/deobf.png" alt="">
             </div>
         </section>
 
@@ -1632,14 +442,14 @@
     <footer>
         <div class="container">
             <p>
-                <span class="lang-en">© 2023 WangZhenle. All rights reserved.</span>
-                <span class="lang-zh">© 2023 WangZhenle. 保留所有权利。</span>
+                <span class="lang-en">© 2025 WangZhenle. All rights reserved.</span>
+                <span class="lang-zh">© 2025 WangZhenle. 保留所有权利。</span>
             </p>
             <div class="social-links">
                 <a href="https://github.com/SUSRDev" target="_blank"><i class="fab fa-github"></i></a>
                 <a href="https://space.bilibili.com/565134548" target="_blank"><i class="fab fa-bilibili"></i></a>
                 <a href="mailto:3042444341@qq.com"><i class="far fa-envelope"></i></a>
-                <a href="https://qq.com" target="_blank"><i class="fab fa-qq"></i></a>
+                <button onclick="alert(3042444341)"><i class="fab fa-qq"></i></button>
             </div>
         </div>
     </footer>
